@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.mapper.UserMapper">
+	<!-- 根据uid查询用户信息 -->
+	<select id="selectUserById" parameterType="Integer" 
+		resultType="com.mybatis.po.MyApple">
+		select * from apple where uid = #{uid}
+	</select>
+	<!-- 查询用户信息 -->
+	<select id="selectAllUser"  resultType="com.mybatis.po.MyApple">
+		select * from apple
+	</select>
+	<!-- 添加用户 ，#{uname}为com.mybatis.po.MyUser的属性值-->
+	<insert id="addUser" parameterType="com.mybatis.po.MyApple">
+		insert into apple (uname,uprice) values(#{uname},#{uprice})
+	</insert>
+	<!-- 修改用户 -->
+	<update id="updateUser" parameterType="com.mybatis.po.MyApple">
+		update apple set uname = #{uname},uprice = #{uprice} where uid = #{uid}
+	</update>
+	<!-- 删除用户 -->
+	<delete id="deleteUser" parameterType="Integer"> 
+		delete from apple where uid = #{uid}
+	</delete>
+</mapper>
